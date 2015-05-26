@@ -1,0 +1,28 @@
+{
+  "name": "barcode-element-polymer",
+  "version": "0.0.0",
+  "authors": [
+    "jnyryan <jnyryan@gmail.com>"
+  ],
+  "description": "an element to display qr codes and barcodes",
+  "main": "index.html",
+  "keywords": [
+    "qr",
+    "barcode",
+    "quick",
+    "read",
+    "polymer"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5",
+    "core-ajax": "Polymer/core-ajax#^0.5"
+  }
+}
