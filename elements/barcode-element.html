@@ -1,0 +1,35 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../lib/jquery-barcode-2.0.3/jquery-barcode.min.js"></script>
+<script type="text/javascript" src="../lib/qrcode.js"></script>
+
+<polymer-element name="scan-code">
+  <template>
+    <span>Hello from <b>scan-code-element</b>. This is my Shadow DOM.</span>
+    <div id="qr"></div>
+    <div id="barcode"></div>
+    <div id="scancode"></div>
+  </template>
+
+  <script>
+  Polymer({
+    ready: function(){
+      var qr = this.$.qr;
+      var qrcode = new QRCode(qr, {
+          text: "http://www.www.www",
+          width: 128,
+          height: 128,
+          colorDark : "#000000",
+          colorLight : "#ffffff"
+      });
+      qrcode.makeCode("johne");
+
+
+
+      var el = this.$.barcode;
+      $(el).barcode("1111567890111", "ean13");
+    }
+  });
+  </script>
+</polymer-element>

@@ -1,6 +1,6 @@
 {
   "name": "barcode-element-polymer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
     "jnyryan <jnyryan@gmail.com>"
   ],
@@ -9,8 +9,8 @@
   "keywords": [
     "qr",
     "barcode",
-    "quick",
-    "read",
+    "quickread",
+    "quick read",
     "polymer"
   ],
   "license": "MIT",
@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^0.5",
-    "core-ajax": "Polymer/core-ajax#^0.5"
+    "core-ajax": "Polymer/core-ajax#^0.5",
+    "jquery": "~2.1.4"
   }
 }
