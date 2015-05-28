@@ -6,8 +6,6 @@
 
 <polymer-element name="scan-code" attributes="data type format width height">
   <template>
-    <span>Hello from <b>scan-code-element</b>. I am a {{format}}</span>
-    <div>{{data}}</div>
     <div id="scancode"></div>
   </template>
 
@@ -17,7 +15,19 @@
     ready: function(){
     },
 
+    typeChanged: function () {
+        this.generate();
+    },
+
     dataChanged: function () {
+        this.generate();
+    },
+
+    heightChanged: function () {
+        this.generate();
+    },
+
+    widthChanged: function () {
         this.generate();
     },
 

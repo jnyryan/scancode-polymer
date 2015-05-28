@@ -13,10 +13,10 @@
     <scan-code type="barcode" format="ean8" data="01234567" height="100" width="2"></scan-code>
     <hr/>
     -->
-    <div>Type:
-      <select>
+    <div>Type:&nbsp;&nbsp;&nbsp;&nbsp;
+      <select id="type">
         <option value="barcode">barcode</option>
-        <option value="qrcode">qrcode</option>
+        <option value="qrcode" selected>qrcode</option>
       </select>
     </div>
     <div>Format:
@@ -26,7 +26,7 @@
         <option value="code39">code39 (code 39)</option>
         <option value="code93">code93 (code 93)</option>
         <option value="code128">code128 (code 128)</option>
-        <option value="ean8">ean8 (ean 8)</option>
+        <option value="ean8" selected>ean8 (ean 8)</option>
         <option value="ean13">ean13 (ean 13)</option>
         <option value="std25">std25 (standard 2 of 5 - industrial 2 of 5)</option>
         <option value="int25">int25 (interleaved 2 of 5)</option>
@@ -34,27 +34,48 @@
         <option value="datamatrix">datamatrix (ASCII + extended)</option>
       </select>
     </div>
-    <div>Data:
-      <input id="data" type="text" />
+    <div>Data:&nbsp;&nbsp;&nbsp;&nbsp;
+      <input id="data" type="text" value="www.johnryan.io" />
     </div>
-    <div>
-      Result
-
-      <scan-code id="anycode" type="qrcode" data="01234567" height="100" width="100"></scan-code>
-      <!--
-
-      <scan-code id="anycode" type="barcode" data="01234567" format="ean8" height="40" width="10"></scan-code>
-      -->
+    <div>Height:&nbsp;
+      <input id="height" type="text" value="100" />
+    </div>
+    <div>Width:&nbsp;&nbsp;
+      <input id="width" type="text" value="100" />
+    </div>
+    <input type="submit" value="Update">
+    <div>Result
+      <scan-code id="anycode" type="qrcode" data="www.johnryan.io" format="ean8" height="100" width="100"></scan-code>
     </div>
     <script>
-    $( document ).ready(function() {
-
-    });
-
-    $("#data").
-      on("blur", function () {
-        $("#anycode").attr("data", $("#data").val())
+      $( document ).ready(function() {
       });
+
+      $( "input[type=submit]" )
+        .click(function( event ) {
+          console.dir( $("#type option:selected").val() );
+          $("#anycode").attr("type", $("#type option:selected").val() );
+          $("#anycode").attr("data", $("#data").val());
+          $("#anycode").attr("height", $("#height").val());
+          $("#anycode").attr("width", $("#width").val());
+          event.preventDefault();
+      });
+
+      $("#type").
+        on("change", function () {
+          if( $("#type option:selected").val() == 'qrcode' ){
+            $("#data").val("www.johnryan.io");
+            $("#height").val("100");
+            $("#width").val("100");
+          }
+
+          if( $("#type option:selected").val() == 'barcode' ){
+            $("#data").val("1234567");
+            $("#height").val("40");
+            $("#width").val("2");
+          }
+        });
+
     </script>
   </body>
 </html>
