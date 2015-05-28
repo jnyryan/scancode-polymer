@@ -1,0 +1,67 @@
+<polymer-element name="qr-code"
+        attributes="data format size margin">
+
+	<script>
+		Polymer('qr-code', {
+
+            format: 'png',
+
+            dataChanged: function () {
+                this.generate();
+            },
+
+            getOptions: function () {
+                var margin = this.margin;
+
+                if (margin === 0) {
+                    // Passing 0 causes qr.js to use the default margin of 4,
+                    // so we need to pass a value of -1 to explicitly disable margins.
+                    margin = -1;
+                }
+
+                return {
+                    modulesize: this.size,
+                    margin: margin
+                };
+            },
+
+            generate: function () {
+                if (this.format === 'png') {
+                    this.generatePNG();
+                }
+                else {
+                    this.generateHTML()
+                }
+            },
+
+            generatePNG: function () {
+                var img;
+                try {
+                    img = document.createElement('img');
+                    img.src = QRCode.generatePNG(this.data, this.getOptions());
+                    this.clear();
+                    this.appendChild(img);
+                }
+                catch (e) {
+                    console.log('no canvas support');
+                }
+            },
+
+            generateHTML: function () {
+                var div = QRCode.generateHTML(this.data, this.getOptions());
+                this.clear();
+                this.appendChild(div);
+            },
+
+            clear: function () {
+                var i;
+                for (i=0; i<this.children.length; i++) {
+                    this.children[i].parentNode.removeChild(this.children[i]);
+                }
+            }
+
+		});
+
+    </script>
+
+</polymer-element>

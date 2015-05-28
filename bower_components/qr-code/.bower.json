@@ -1,0 +1,30 @@
+{
+  "name": "qr-code",
+  "version": "0.0.1",
+  "homepage": "https://github.com/burnnat/qr-code",
+  "authors": [
+    "Eduard Castellano <educastellano08@gmail.com>",
+    "Nat Burns <nbaccount@burnskids.com>"
+  ],
+  "description": "Web component for generating QR codes.",
+  "keywords": [
+    "qr",
+    "qrcode"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "index.html",
+    "README.md"
+  ],
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.1",
+    "commit": "26df2322817c1f229d580feb636970acb70b2c88"
+  },
+  "_source": "git://github.com/burnnat/qr-code.git",
+  "_target": "~0.0.1",
+  "_originalSource": "qr-code",
+  "_direct": true
+}
