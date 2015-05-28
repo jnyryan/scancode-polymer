@@ -2,6 +2,21 @@
 
 polymer element to display quickread codes and barcodes
 
+## Installation
+
+``` bash
+bower install scancode
+```
+
+## Usage
+
+``` html
+<scan-code id="my_qrcode" type="qrcode" data="http://www.johnryan.io" height="100" width="100"></scan-code>
+
+<scan-code id="my_qrcode" type="barcode" format="12345678" data="12345678" height="100" width="100"></scan-code>
+
+```
+
 ## References
 
 The following came in handy during this project

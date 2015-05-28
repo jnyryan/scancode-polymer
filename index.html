@@ -1,18 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- 1. Load platform support before any code that touches the DOM. -->
     <script src="./bower_components/webcomponentsjs/webcomponents.js"></script>
-    <!-- 2. Load the component using an HTML Import -->
-    <link rel="import" href="elements/my-element.html">
-    <link rel="import" href="elements/barcode-element.html">
+    <link rel="import" href="elements/scancode-element.html">
   </head>
   <body>
-    <!-- 3. Declare the element by its tag. -->
+    <!--
     <my-element></my-element>
     <hr/>
-    <scan-code format="qrcode" data="JOHNNY" height="128" width="128"></scan-code>
+    <scan-code type="qrcode" format="qrcode" data="JOHNNY" height="128" width="128"></scan-code>
     <hr/>
-    <scan-code format="ean8" data="01234567" height="100" width="2"></scan-code>
+    <scan-code type="barcode" format="ean8" data="01234567" height="100" width="2"></scan-code>
+    <hr/>
+    -->
+    <div>Type:
+      <select>
+        <option value="barcode">barcode</option>
+        <option value="qrcode">qrcode</option>
+      </select>
+    </div>
+    <div>Format:
+      <select>
+        <option value="codabar">codabar</option>
+        <option value="code11">code11 (code 11)</option>
+        <option value="code39">code39 (code 39)</option>
+        <option value="code93">code93 (code 93)</option>
+        <option value="code128">code128 (code 128)</option>
+        <option value="ean8">ean8 (ean 8)</option>
+        <option value="ean13">ean13 (ean 13)</option>
+        <option value="std25">std25 (standard 2 of 5 - industrial 2 of 5)</option>
+        <option value="int25">int25 (interleaved 2 of 5)</option>
+        <option value="msi">msi</option>
+        <option value="datamatrix">datamatrix (ASCII + extended)</option>
+      </select>
+    </div>
+    <div>Data:
+      <input id="data" type="text" />
+    </div>
+    <div>
+      Result
+
+      <scan-code id="anycode" type="qrcode" data="01234567" height="100" width="100"></scan-code>
+      <!--
+
+      <scan-code id="anycode" type="barcode" data="01234567" format="ean8" height="40" width="10"></scan-code>
+      -->
+    </div>
+    <script>
+    $( document ).ready(function() {
+
+    });
+
+    $("#data").
+      on("blur", function () {
+        $("#anycode").attr("data", $("#data").val())
+      });
+    </script>
   </body>
 </html>

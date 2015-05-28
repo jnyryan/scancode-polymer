@@ -4,7 +4,7 @@
 <script type="text/javascript" src="../lib/jquery-barcode-2.0.3/jquery-barcode.min.js"></script>
 <script type="text/javascript" src="../lib/qrcode.js"></script>
 
-<polymer-element name="scan-code" attributes="data format width height">
+<polymer-element name="scan-code" attributes="data type format width height">
   <template>
     <span>Hello from <b>scan-code-element</b>. I am a {{format}}</span>
     <div>{{data}}</div>
@@ -22,16 +22,17 @@
     },
 
     generate : function(){
-      if (this.format === 'qrcode') {
-          this.generateQRcode();
+      if (this.type === 'barcode') {
+          this.generateBarcode();
       }
       else {
-          this.generateBarcode()
+          this.generateQRcode()
       }
     },
 
     generateQRcode: function(){
       var el = this.$.scancode;
+      el.innerHTML = "";
       var qrcode = new QRCode(el, {
           text: this.data,
           width: this.width,
@@ -40,7 +41,6 @@
           colorLight : "#ffffff",
           correctLevel : QRCode.CorrectLevel.H
       });
-      //qrcode.makeCode(this.data);
     },
 
     generateBarcode: function(){
