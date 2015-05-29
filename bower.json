@@ -1,19 +1,23 @@
 {
   "name": "scancode",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "authors": [
     "jnyryan <jnyryan@gmail.com>"
   ],
-  "description": "a polymer element to display qr codes and barcodes",
+  "description": "display QR Codes or Barcodes using a single element",
   "main": "index.html",
   "keywords": [
-    "qr",
-    "barcode",
+    "Polymer",
+    "web-components",
+    "QR",
+    "QRCode",
     "quickread",
     "quick read",
-    "polymer"
+    "barcode",
+    "scanner"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/jnyryan/scancode-polymer.git",
   "ignore": [
     "**/.*",
     "node_modules",
