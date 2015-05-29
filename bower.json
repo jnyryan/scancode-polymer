@@ -22,8 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.5",
-    "core-ajax": "Polymer/core-ajax#^0.5",
+    "polymer": "Polymer/polymer#^1.0.0",
     "jquery": "~2.1.4"
   }
 }

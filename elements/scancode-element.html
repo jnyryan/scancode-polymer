@@ -1,26 +1,44 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="../lib/jquery-barcode-2.0.3/jquery-barcode.min.js"></script>
 <script type="text/javascript" src="../lib/qrcode.js"></script>
 
-<polymer-element name="scan-code" attributes="data type format width height">
-  <template>
-    <div id="scancode"></div>
-  </template>
+<polymer-element name="scan-code">
+
+  <dom-module id="scan-code">
+    <template>
+      <p>I'm a DOM element. This is my local DOM!</p>[[type]]
+      <div id='scancode'></div>
+    </template>
+  </dom-module>
 
   <script>
   Polymer({
+    is: "scan-code",
+    properties: {
+      data: { type: String, observer: 'dataChanged'},
+      type: { type: String, observer: 'typeChanged'},
+      format: { type: String, observer: 'formatChanged'},
+      height: { type: String, observer: 'heightChanged'},
+      width: { type: String, observer: 'widthChanged'}
+    },
 
     ready: function(){
+      console.log("ready");
+      console.log(this.format);
+      this.generate();
+    },
+
+    dataChanged: function () {
+        this.generate();
     },
 
     typeChanged: function () {
         this.generate();
     },
 
-    dataChanged: function () {
-        this.generate();
+    formatChanged: function () {
+        console.log("Not Implememnted");
     },
 
     heightChanged: function () {
@@ -32,6 +50,7 @@
     },
 
     generate : function(){
+      console.dir(this.type);
       if (this.type === 'barcode') {
           this.generateBarcode();
       }
