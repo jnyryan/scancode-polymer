@@ -1,10 +1,10 @@
 {
   "name": "scancode",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "authors": [
     "jnyryan <jnyryan@gmail.com>"
   ],
-  "description": "display QR Codes or Barcodes using a single element",
+  "description": "Display QR Codes or Barcodes using a single element",
   "main": "index.html",
   "keywords": [
     "Polymer",
