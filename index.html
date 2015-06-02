@@ -4,11 +4,24 @@
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
   <link rel="import" href="scancode.html">
-
+  <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 15px;
+    }
+    tfoot {
+      display: table-footer-group;
+      vertical-align: middle;
+      text-align: right;
+      border-color: inherit;
+  }
+  </style>
   </head>
   <body>
     <!--
-
     <my-element></my-element>
     <hr/>
     <scan-code type="qrcode" format="qrcode" data="JOHNNY" height="128" width="128"></scan-code>
@@ -16,37 +29,59 @@
     <scan-code type="barcode" format="ean8" data="01234567" height="100" width="2"></scan-code>
     <hr/>
     -->
-    <div>Type:&nbsp;&nbsp;&nbsp;&nbsp;
-      <select id="type">
-        <option value="barcode">barcode</option>
-        <option value="qrcode" selected>qrcode</option>
-      </select>
-    </div>
-    <div>Format:
-      <select>
-        <option value="codabar">codabar</option>
-        <option value="code11">code11 (code 11)</option>
-        <option value="code39">code39 (code 39)</option>
-        <option value="code93">code93 (code 93)</option>
-        <option value="code128">code128 (code 128)</option>
-        <option value="ean8" selected>ean8 (ean 8)</option>
-        <option value="ean13">ean13 (ean 13)</option>
-        <option value="std25">std25 (standard 2 of 5 - industrial 2 of 5)</option>
-        <option value="int25">int25 (interleaved 2 of 5)</option>
-        <option value="msi">msi</option>
-        <option value="datamatrix">datamatrix (ASCII + extended)</option>
-      </select>
-    </div>
-    <div>Data:&nbsp;&nbsp;&nbsp;&nbsp;
-      <input id="data" type="text" value="www.johnryan.io" />
-    </div>
-    <div>Height:&nbsp;
-      <input id="height" type="text" value="100" />
-    </div>
-    <div>Width:&nbsp;&nbsp;
-      <input id="width" type="text" value="100" />
-    </div>
-    <input type="submit" value="Update">
+    <table style="width:50%">
+      <caption>Attributes</caption>
+      <tr>
+        <th>key</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>
+          <select id="type">
+            <option value="barcode">barcode</option>
+            <option value="qrcode" selected>qrcode</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>format</td>
+        <td>
+          <select>
+            <option value="codabar">codabar</option>
+            <option value="code11">code11 (code 11)</option>
+            <option value="code39">code39 (code 39)</option>
+            <option value="code93">code93 (code 93)</option>
+            <option value="code128">code128 (code 128)</option>
+            <option value="ean8" selected>ean8 (ean 8)</option>
+            <option value="ean13">ean13 (ean 13)</option>
+            <option value="std25">std25 (standard 2 of 5 - industrial 2 of 5)</option>
+            <option value="int25">int25 (interleaved 2 of 5)</option>
+            <option value="msi">msi</option>
+            <option value="datamatrix">datamatrix (ASCII + extended)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>data</td>
+        <td>
+          <input id="data" type="text" value="www.johnryan.io" />
+        </td>
+      </tr>
+      <tr>
+        <td>height</td>
+        <td><input id="height" type="text" value="100" /></td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td><input id="width" type="text" value="100" /></td>
+      </tr>
+      <tfoot>
+        <tr>
+          <td colspan="2"><input type="submit" value="Update"></td>
+        </tr>
+      </tfoot>
+    </table>
     <div>Result
       <scan-code id="anycode" type="qrcode" data="www.johnryan.io" format="ean8" height="100" width="100"></scan-code>
     </div>

@@ -7,7 +7,6 @@
 
   <dom-module id="scan-code">
     <template>
-      <p>I'm a DOM element. This is my local DOM!</p>[[type]]
       <div id='scancode'></div>
     </template>
   </dom-module>
@@ -24,8 +23,6 @@
     },
 
     ready: function(){
-      console.log("ready");
-      console.log(this.format);
       this.generate();
     },
 
@@ -38,7 +35,7 @@
     },
 
     formatChanged: function () {
-        console.log("Not Implememnted");
+      this.generate();
     },
 
     heightChanged: function () {
@@ -51,12 +48,18 @@
 
     generate : function(){
       console.dir(this.type);
-      if (this.type === 'barcode') {
-          this.generateBarcode();
+      try{
+        if (this.type === 'barcode') {
+            this.generateBarcode();
+        }
+        else {
+            this.generateQRcode()
+        }
       }
-      else {
-          this.generateQRcode()
+      catch(err) {
+        console.dir(err);
       }
+
     },
 
     generateQRcode: function(){
@@ -75,9 +78,16 @@
     generateBarcode: function(){
       var el = this.$.scancode;
       $(el).barcode(
-        {code: this.data, crc:false},
+        {
+          code: this.data,
+          crc:false
+        },
         this.format,
-        {barWidth:this.width, barHeight:this.height});
+        {
+          barWidth:this.width,
+          barHeight:this.height
+        }
+      );
     }
 
   });

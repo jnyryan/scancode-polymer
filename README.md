@@ -15,9 +15,17 @@ bower install scancode
 ## Usage
 
 ``` html
-<scan-code id="my_qrcode" type="qrcode" data="http://www.johnryan.io" height="100" width="100"></scan-code>
-
-<scan-code id="my_qrcode" type="barcode" format="12345678" data="12345678" height="100" width="100"></scan-code>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="bower_components/scancode/scancode.html">
+  </head>
+  <body>
+    <scan-code id="my_qrcode" type="qrcode" data="http://www.johnryan.io" height="100" width="100"></scan-code>
+    <scan-code id="my_barcode" type="barcode" format="12345678" data="12345678" height="40" width="1"></scan-code>
+  </body>
+</html>
 
 ```
 
