@@ -56,5 +56,5 @@ The following came in handy during this project
 ### Tagging
 
 ``` bash
-git tag -a v0.0.5 -m "Tagging v0.0.5"
+git tag -a v0.0.7 -m "Tagging v0.0.7"
 ```
