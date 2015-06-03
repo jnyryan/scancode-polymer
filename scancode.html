@@ -7,7 +7,7 @@
 
   <dom-module id="scan-code">
     <template>
-      <div id='scancode'></div>
+      <div id='scancode' style="text-align:center;"></div>
     </template>
   </dom-module>
 
@@ -15,11 +15,11 @@
   Polymer({
     is: "scan-code",
     properties: {
-      data: { type: String, observer: 'dataChanged'},
-      type: { type: String, observer: 'typeChanged'},
+      data:   { type: String, observer: 'dataChanged'},
+      type:   { type: String, observer: 'typeChanged'},
       format: { type: String, observer: 'formatChanged'},
       height: { type: String, observer: 'heightChanged'},
-      width: { type: String, observer: 'widthChanged'}
+      width:  { type: String, observer: 'widthChanged'}
     },
 
     ready: function(){
@@ -52,14 +52,18 @@
         if (this.type === 'barcode') {
             this.generateBarcode();
         }
-        else {
+        else if (this.type === 'qrcode'){
             this.generateQRcode()
+        }
+        else{
+          console.log("Not Rendering scancode");
+          var el = this.$.scancode;
+          el.innerHTML = "";
         }
       }
       catch(err) {
         console.dir(err);
       }
-
     },
 
     generateQRcode: function(){

@@ -41,6 +41,7 @@
           <select id="type">
             <option value="barcode">barcode</option>
             <option value="qrcode" selected>qrcode</option>
+            <option value="none">none</option>
           </select>
         </td>
       </tr>
@@ -83,7 +84,9 @@
       </tfoot>
     </table>
     <div>Result
-      <scan-code id="anycode" type="qrcode" data="www.johnryan.io" format="ean8" height="100" width="100"></scan-code>
+      <div style="text-align:center">
+        <scan-code id="anycode" type="qrcode" data="www.johnryan.io" format="ean8" height="100" width="100"></scan-code>
+      </div>
     </div>
     <script>
       $( document ).ready(function() {
