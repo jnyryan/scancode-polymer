@@ -23,7 +23,7 @@ bower install scancode
   </head>
   <body>
     <scan-code id="my_qrcode" type="qrcode" data="http://www.johnryan.io" height="100" width="100"></scan-code>
-    <scan-code id="my_barcode" type="barcode" format="12345678" data="12345678" height="40" width="1"></scan-code>
+    <scan-code id="my_barcode" type="barcode" format="ean8" data="12345678" height="40" width="1"></scan-code>
   </body>
 </html>
 
