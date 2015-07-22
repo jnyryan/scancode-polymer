@@ -29,6 +29,48 @@ bower install scancode
 
 ```
 
+## API
+The following attributes are available
+
+####type
+  - barcode
+  - qrcode
+
+####format:
+
+not required by qrcode
+
+  - codabar
+    * e.g. 12345678901234567890
+  - code11 (code 11)
+    * e.g. 12345678901234567890
+  - code39 (code 39)
+    * e.g. abc12345678901234567890
+  - code93 (code 93)
+    * e.g. abc12345678901234567890
+  - code128 (code 128)
+    * e.g. 12345678901234567890
+  - ean8 (ean 8)
+    * e.g. 1234567
+  - ean13 (ean 13)
+    * e.g. 1234567890128
+  - std25 (standard 2 of 5 - industrial 2 of 5)
+    * e.g. 1234, 1234567891234567812345678
+  - int25 (interleaved 2 of 5)
+    * e.g. 1234567
+  - msi
+    * e.g. 12345678901234567890
+  - datamatrix (ASCII + extended)
+    * e.g. AABC12345678901234567890
+
+#### height
+
+  - number
+
+#### width
+
+  - number
+
 ## Contributing
 
 If you have any ideas on features or bug fixes you'd like in this project then why not consider contributing! It's as easy as :
