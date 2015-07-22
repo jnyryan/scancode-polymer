@@ -77,6 +77,14 @@
         <td>width</td>
         <td><input id="width" type="text" value="100" /></td>
       </tr>
+      <tr>
+        <td>colorDark</td>
+        <td><input id="colorDark" type="text" value="#000000" /></td>
+      </tr>
+      <tr>
+        <td>colorLight</td>
+        <td><input id="colorLight" type="text" value="#ffffff" /></td>
+      </tr>
       <tfoot>
         <tr>
           <td colspan="2"><input type="submit" value="Update"></td>
@@ -85,7 +93,7 @@
     </table>
     <div>Result
       <div style="text-align:center">
-        <scan-code id="anycode" type="qrcode" data="www.johnryan.io" format="ean8" height="100" width="100"></scan-code>
+        <scan-code id="anycode" type="qrcode" data="www.johnryan.io" format="ean8" height="100" width="100" colorDark="#000000" colorLight="#ffffff"></scan-code>
       </div>
     </div>
     <script>
@@ -94,11 +102,13 @@
 
       $( "input[type=submit]" )
         .click(function( event ) {
-          console.dir( $("#type option:selected").val() );
+          //console.dir( $("#type option:selected").val() );
           $("#anycode").attr("type", $("#type option:selected").val() );
           $("#anycode").attr("data", $("#data").val());
           $("#anycode").attr("height", $("#height").val());
           $("#anycode").attr("width", $("#width").val());
+          $("#anycode").attr("colorDark", $("#colorDark").val());
+          $("#anycode").attr("colorLight", $("#colorLight").val());
           event.preventDefault();
       });
 

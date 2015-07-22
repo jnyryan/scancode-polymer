@@ -1,4 +1,4 @@
-#barcode-element-polymer
+#scancode-element
 
 polymer element to display quickread codes and barcodes
 
@@ -32,44 +32,27 @@ bower install scancode
 ## API
 The following attributes are available
 
-####type
-  - barcode
-  - qrcode
+|attribute| value|description|
+| ------------- |:-------------| :-----|
+|type|  barcode  |  renders a BarCode |
+||  qrcode  |  renders a QRCode |
+|format <BR/> (required for barcode only)| codabar |  * e.g. 12345678901234567890|
+|| code11 (code 11)|  * e.g. 12345678901234567890|
+|| code39 (code 39)|  * e.g. abc12345678901234567890|
+|| code93 (code 93)|  * e.g. abc12345678901234567890|
+|| code128 (code 128)|  * e.g. 12345678901234567890|
+|| ean8 (ean 8)|  * e.g. 1234567|
+|| ean13 (ean 13)|  * e.g. 1234567890128|
+|| std25 (standard 2 of 5 - industrial 2 of 5)|  * e.g. 1234, 1234567891234567812345678|
+|| int25 (interleaved 2 of 5)|  * e.g. 1234567|
+|| msi|  * e.g. 12345678901234567890|
+|| datamatrix (ASCII + extended)|  * e.g. AABC12345678901234567890|
+|height|number| specifies the height of the scancode  |  
+|width|number|specifies the width of the scancode|
+|colordark <BR/> (qrcode only)|hex color value|* e.g. #4747FF <br/> default: #000000|
+|colorlight <BR/> (qrcode only)|hex color value|* e.g. #FF9900 <br/> default: #ffffff|
 
-####format:
 
-not required by qrcode
-
-  - codabar
-    * e.g. 12345678901234567890
-  - code11 (code 11)
-    * e.g. 12345678901234567890
-  - code39 (code 39)
-    * e.g. abc12345678901234567890
-  - code93 (code 93)
-    * e.g. abc12345678901234567890
-  - code128 (code 128)
-    * e.g. 12345678901234567890
-  - ean8 (ean 8)
-    * e.g. 1234567
-  - ean13 (ean 13)
-    * e.g. 1234567890128
-  - std25 (standard 2 of 5 - industrial 2 of 5)
-    * e.g. 1234, 1234567891234567812345678
-  - int25 (interleaved 2 of 5)
-    * e.g. 1234567
-  - msi
-    * e.g. 12345678901234567890
-  - datamatrix (ASCII + extended)
-    * e.g. AABC12345678901234567890
-
-#### height
-
-  - number
-
-#### width
-
-  - number
 
 ## Contributing
 

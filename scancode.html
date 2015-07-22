@@ -15,11 +15,13 @@
   Polymer({
     is: "scan-code",
     properties: {
-      data:   { type: String, observer: 'dataChanged'},
-      type:   { type: String, observer: 'typeChanged'},
-      format: { type: String, observer: 'formatChanged'},
-      height: { type: String, observer: 'heightChanged'},
-      width:  { type: String, observer: 'widthChanged'}
+      data:         { type: String, observer: 'dataChanged'},
+      type:         { type: String, observer: 'typeChanged'},
+      format:       { type: String, observer: 'formatChanged'},
+      height:       { type: String, observer: 'heightChanged'},
+      width:        { type: String, observer: 'widthChanged'},
+      colordark:    { type: String, observer: 'colorDarkChanged'},
+      colorlight:   { type: String, observer: 'colorLightChanged'}
     },
 
     ready: function(){
@@ -44,10 +46,22 @@
 
     widthChanged: function () {
         this.generate();
+        console.log("changed");
+    },
+
+    colorDarkChanged: function () {
+      console.log("changed");
+        this.generate();
+    },
+
+    colorLightChanged: function () {
+      console.log("changed");
+
+        this.generate();
     },
 
     generate : function(){
-      console.dir(this.type);
+      //console.dir(this.type);
       try{
         if (this.type === 'barcode') {
             this.generateBarcode();
@@ -69,12 +83,13 @@
     generateQRcode: function(){
       var el = this.$.scancode;
       el.innerHTML = "";
+      //console.log(this.colorDark);
       var qrcode = new QRCode(el, {
           text: this.data,
           width: this.width,
           height: this.height,
-          colorDark : "#000000",
-          colorLight : "#ffffff",
+          colorDark : this.colordark || "#000000",
+          colorLight : this.colorlight || "#ffffff",
           correctLevel : QRCode.CorrectLevel.H
       });
     },
@@ -86,7 +101,7 @@
           code: this.data,
           crc:false
         },
-        this.format,
+        this.format || "codabar",
         {
           barWidth:this.width,
           barHeight:this.height
