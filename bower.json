@@ -27,6 +27,8 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "jquery-barcode": "*",
+    "qrcode": "*"
   }
 }
