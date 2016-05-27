@@ -86,20 +86,28 @@
         this.generate();
       },
       generate: function () {
-        //console.dir(this.type);
-        try {
-          if (this.type === 'barcode') {
-            this.generateBarcode();
-          } else if (this.type === 'qrcode') {
-            this.generateQRcode();
-          } else {
-            console.debug('Not Rendering scancode');
-            var el = this.$.scancode;
-            Polymer.dom(el).innerHTML = '';
+        var rendered = false;
+        if (this.data) {
+          try {
+            if (this.type === 'barcode') {
+              rendered = this.generateBarcode();
+            }
+            else if (this.type === 'qrcode') {
+              rendered = this.generateQRcode();
+            }
           }
-        } catch (err) {
-          console.dir(err);
+          catch (err) {
+            console.dir(err);
+          }
         }
+
+        if (!rendered) {
+          console.debug("Not Rendering scancode");
+          var el = this.$.scancode;
+          el.innerHTML = "";
+        }
+
+        return rendered;
       },
       generateQRcode: function () {
         var el = this.$.scancode;
@@ -113,6 +121,7 @@
           colorLight: this.colorlight || '#ffffff',
           correctLevel: QRCode.CorrectLevel.H
         });
+        return true;
       },
       generateBarcode: function () {
         var el = this.$.scancode;
@@ -123,6 +132,7 @@
           barWidth: this.width,
           barHeight: this.height
         });
+        return true;
       }
     });
   </script>
