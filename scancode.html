@@ -75,14 +75,14 @@
       },
       widthChanged: function () {
         this.generate();
-        console.log('changed');
+        console.debug('changed');
       },
       colorDarkChanged: function () {
-        console.log('changed');
+        console.debug('changed');
         this.generate();
       },
       colorLightChanged: function () {
-        console.log('changed');
+        console.debug('changed');
         this.generate();
       },
       generate: function () {
@@ -93,7 +93,7 @@
           } else if (this.type === 'qrcode') {
             this.generateQRcode();
           } else {
-            console.log('Not Rendering scancode');
+            console.debug('Not Rendering scancode');
             var el = this.$.scancode;
             Polymer.dom(el).innerHTML = '';
           }
@@ -104,7 +104,7 @@
       generateQRcode: function () {
         var el = this.$.scancode;
         Polymer.dom(el).innerHTML = '';
-        //console.log(this.colorDark);
+        //console.debug(this.colorDark);
         var qrcode = new QRCode(el, {
           text: this.data,
           width: this.width,
