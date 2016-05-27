@@ -1,114 +1,139 @@
-<link rel="import" href="lib/polymer.html">
-<script type="text/javascript" src="lib/jquery.min.js"></script>
-<script type="text/javascript" src="lib/jquery-barcode.min.js"></script>
+<link rel="import" href="../polymer/polymer.html">
+<script type="text/javascript" src="../jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../jquery-barcode/jquery-barcode.js"></script>
 <script type="text/javascript" src="lib/qrcode.js"></script>
 
-<polymer-element name="scan-code">
-
-  <dom-module id="scan-code">
-    <template>
-      <div id='scancode' style="text-align:center;"></div>
+<dom-module id="scan-code">
+  <template>
+      <div id="scancode" style="text-align:center;"></div>
     </template>
-  </dom-module>
-
   <script>
-  Polymer({
-    is: "scan-code",
-    properties: {
-      data:         { type: String, observer: 'dataChanged'},
-      type:         { type: String, observer: 'typeChanged'},
-      format:       { type: String, observer: 'formatChanged'},
-      height:       { type: String, observer: 'heightChanged'},
-      width:        { type: String, observer: 'widthChanged'},
-      colordark:    { type: String, observer: 'colorDarkChanged'},
-      colorlight:   { type: String, observer: 'colorLightChanged'}
-    },
-
-    ready: function(){
-      this.generate();
-    },
-
-    dataChanged: function () {
+    Polymer({
+      is: 'scan-code',
+      properties: {
+        colorDark: { observer: 'colorDarkChanged' },
+        colorLight: { observer: 'colorLightChanged' },
+        data: { observer: 'dataChanged' },
+        format: { observer: 'formatChanged' },
+        height: { observer: 'heightChanged' },
+        is: {
+          type: String,
+          value: 'scan-code'
+        },
+        properties: {
+          type: Object,
+          value: function () {
+            return {
+              data: {
+                type: String,
+                observer: 'dataChanged'
+              },
+              type: {
+                type: String,
+                observer: 'typeChanged'
+              },
+              format: {
+                type: String,
+                observer: 'formatChanged'
+              },
+              height: {
+                type: String,
+                observer: 'heightChanged'
+              },
+              width: {
+                type: String,
+                observer: 'widthChanged'
+              },
+              colordark: {
+                type: String,
+                observer: 'colorDarkChanged'
+              },
+              colorlight: {
+                type: String,
+                observer: 'colorLightChanged'
+              }
+            };
+          }
+        },
+        type: { observer: 'typeChanged' },
+        width: { observer: 'widthChanged' }
+      },
+      ready: function () {
         this.generate();
-    },
-
-    typeChanged: function () {
+      },
+      dataChanged: function () {
         this.generate();
-    },
-
-    formatChanged: function () {
-      this.generate();
-    },
-
-    heightChanged: function () {
+      },
+      typeChanged: function () {
         this.generate();
-    },
-
-    widthChanged: function () {
+      },
+      formatChanged: function () {
         this.generate();
-        console.log("changed");
-    },
-
-    colorDarkChanged: function () {
-      console.log("changed");
+      },
+      heightChanged: function () {
         this.generate();
-    },
-
-    colorLightChanged: function () {
-      console.log("changed");
-
+      },
+      widthChanged: function () {
         this.generate();
-    },
-
-    generate : function(){
-      //console.dir(this.type);
-      try{
-        if (this.type === 'barcode') {
-            this.generateBarcode();
+        console.debug('changed');
+      },
+      colorDarkChanged: function () {
+        console.debug('changed');
+        this.generate();
+      },
+      colorLightChanged: function () {
+        console.debug('changed');
+        this.generate();
+      },
+      generate: function () {
+        var rendered = false;
+        if (this.data) {
+          try {
+            if (this.type === 'barcode') {
+              rendered = this.generateBarcode();
+            }
+            else if (this.type === 'qrcode') {
+              rendered = this.generateQRcode();
+            }
+          }
+          catch (err) {
+            console.dir(err);
+          }
         }
-        else if (this.type === 'qrcode'){
-            this.generateQRcode()
-        }
-        else{
-          console.log("Not Rendering scancode");
+
+        if (!rendered) {
+          console.debug("Not Rendering scancode");
           var el = this.$.scancode;
           el.innerHTML = "";
         }
-      }
-      catch(err) {
-        console.dir(err);
-      }
-    },
 
-    generateQRcode: function(){
-      var el = this.$.scancode;
-      el.innerHTML = "";
-      //console.log(this.colorDark);
-      var qrcode = new QRCode(el, {
+        return rendered;
+      },
+      generateQRcode: function () {
+        var el = this.$.scancode;
+        Polymer.dom(el).innerHTML = '';
+        //console.debug(this.colorDark);
+        var qrcode = new QRCode(el, {
           text: this.data,
           width: this.width,
           height: this.height,
-          colorDark : this.colordark || "#000000",
-          colorLight : this.colorlight || "#ffffff",
-          correctLevel : QRCode.CorrectLevel.H
-      });
-    },
-
-    generateBarcode: function(){
-      var el = this.$.scancode;
-      $(el).barcode(
-        {
+          colorDark: this.colordark || '#000000',
+          colorLight: this.colorlight || '#ffffff',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+        return true;
+      },
+      generateBarcode: function () {
+        var el = this.$.scancode;
+        $(el).barcode({
           code: this.data,
-          crc:false
-        },
-        this.format || "codabar",
-        {
-          barWidth:this.width,
-          barHeight:this.height
-        }
-      );
-    }
-
-  });
+          crc: false
+        }, this.format || 'codabar', {
+          barWidth: this.width,
+          barHeight: this.height
+        });
+        return true;
+      }
+    });
   </script>
-</polymer-element>
+</dom-module>
