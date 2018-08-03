@@ -1,17 +1,15 @@
-<link rel="import" href="lib/polymer.html">
+<link rel="import" href="../polymer/polymer.html">
 <script type="text/javascript" src="lib/jquery.min.js"></script>
 <script type="text/javascript" src="lib/jquery-barcode.min.js"></script>
 <script type="text/javascript" src="lib/qrcode.js"></script>
 
-<polymer-element name="scan-code">
-
-  <dom-module id="scan-code">
-    <template>
-      <div id='scancode' style="text-align:center;"></div>
-    </template>
-  </dom-module>
-
-  <script>
+<dom-module id="scan-code">
+  <template>
+    <div id='scancode' style="text-align:center;"></div>
+  </template>
+  
+<script>
+(function() {
   Polymer({
     is: "scan-code",
     properties: {
@@ -110,5 +108,6 @@
     }
 
   });
-  </script>
-</polymer-element>
+}());
+</script>
+</dom-module>

@@ -1,10 +1,11 @@
 {
   "name": "scancode",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "authors": [
-    "jnyryan <jnyryan@gmail.com>"
+    "jnyryan <jnyryan@gmail.com>",
+    "david <david.hasiholan@gmail.com>"
   ],
-  "description": "Display QR Codes or Barcodes using a single element",
+  "description": "Display QR Codes or Barcodes using a single element for Polymer 2.0",
   "main": "index.html",
   "keywords": [
     "Polymer",
@@ -26,7 +27,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.0.0",
+    "polymer": "Polymer/polymer#^2.0.0",
     "jquery": "~2.1.4"
   }
 }
